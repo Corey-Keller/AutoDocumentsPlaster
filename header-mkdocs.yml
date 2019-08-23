@@ -1,12 +1,12 @@
-site_name: <%=$PLASTER_PARAM_ModuleName%>
-repo_url: https://<%=$PLASTER_PARAM_GitHubDomain%>/<%=$PLASTER_PARAM_GitHubUserName%>/<%=$PLASTER_PARAM_ModuleName%>
-site_author: <%=$PLASTER_PARAM_FullName%>
+site_name: AutoDocumentsPlaster
+repo_url: https://github.com/Corey-Keller/AutoDocumentsPlaster
+site_author: Corey Keller
 edit_uri: edit/master/docs/
 theme: readthedocs
-copyright: "<%=$PLASTER_PARAM_ModuleName%> is licensed under the <a href='https://<%=$PLASTER_PARAM_GitHubDomain%>/<%=$PLASTER_PARAM_GitHubUserName%>/<%=$PLASTER_PARAM_ModuleName%>/raw/master/LICENSE'><%=$PLASTER_PARAM_License%> license"
+copyright: "AutoDocumentsPlaster is licensed under the <a href='https://github.com/Corey-Keller/AutoDocumentsPlaster/raw/master/LICENSE'>AGPL license"
 pages:
   - Home: index.md
-  - <%=$PLASTER_PARAM_ModuleName%> Basics:
-    - What is <%=$PLASTER_PARAM_ModuleName%>?: about.md
+  - AutoDocumentsPlaster Basics:
+    - What is AutoDocumentsPlaster?: about.md
     - Quick Start: Quick-Start-Installation-and-Example.md
   - Acknowledgements: acknowledgements.md

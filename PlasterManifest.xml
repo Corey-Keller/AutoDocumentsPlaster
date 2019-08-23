@@ -60,7 +60,7 @@
     <!-- Licensing -->
     <parameter name='License'
                type='choice'
-               default='1'
+               default='0'
                store='text'
                prompt='Select a license for your module'>
       <choice label='&amp;AGPL'
@@ -81,9 +81,26 @@
     </parameter>
   </parameters>
   <content>
-  <message>Setting up your project</message>
-  <newModuleManifest destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psd1' moduleVersion='$PLASTER_PARAM_ModuleVersion' rootModule='${PLASTER_PARAM_ModuleName}.psm1' author='$PLASTER_PARAM_FullName' description='$PLASTER_PARAM_ModuleDesc'/>
-  <templateFile source='ModuleName\ModuleName.psm1' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psm1'/>
-  <templateFile source='appveyor.yml' destination='appveyor.yml'/>
+    <message>Setting up your project</message>
+    <newModuleManifest destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psd1' moduleVersion='$PLASTER_PARAM_ModuleVersion' rootModule='${PLASTER_PARAM_ModuleName}.psm1' author='$PLASTER_PARAM_FullName' description='$PLASTER_PARAM_ModuleDesc'/>
+    <templateFile source='template\ModuleName\ModuleName.psm1' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psm1'/>
+    <templateFile source='template\appveyor.yml' destination='appveyor.yml'/>
+    <templateFile source='template\header-mkdocs.yml' destination='header-mkdocs.yml'/>
+    <templateFile source='template\README.md' destination='README.md'/>
+    <templateFile source='template\CHANGELOG.md' destination='CHANGELOG.md'/>
+    <templateFile source='template\docs\index.md' destination='docs\index.md'/>
+    <templateFile source='template/license/AGPL.txt' destination='LICENSE' condition="$PLASTER_PARAM_License -eq 'AGPL'"/>
+    <templateFile source='template/license/Apache.txt' destination='LICENSE' condition="$PLASTER_PARAM_License -eq 'Apache'"/>
+    <templateFile source='template/license/GPL.txt' destination='LICENSE' condition="$PLASTER_PARAM_License -eq 'GPL'"/>
+    <templateFile source='template/license/MIT.txt' destination='LICENSE' condition="$PLASTER_PARAM_License -eq 'MIT'"/>
+    <file source='template\.gitignore' destination='.gitignore'/>
+    <file source='template\build.depend.psd1' destination='build.depend.psd1'/>
+    <file source='template\build.ps1' destination='build.ps1'/>
+    <file source='template\psake.ps1' destination='psake.ps1'/>
+    <file source='template\deploy.PSDeploy.ps1' destination='deploy.PSDeploy.ps1'/>
+    <file source='template\GitVersion.yml' destination='GitVersion.yml'/>
+    <file source='template\tests\**' destination='tests'/>
+    <file source='template\ModuleName\Public\**' destination='Public'/>
+    <file source='template\ModuleName\Private\**' destination='Private'/>
   </content>
 </plasterManifest>
