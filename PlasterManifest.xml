@@ -89,10 +89,10 @@
     <templateFile source='template\README.md' destination='README.md'/>
     <templateFile source='template\CHANGELOG.md' destination='CHANGELOG.md'/>
     <templateFile source='template\docs\index.md' destination='docs\index.md'/>
-    <templateFile source='template/license/AGPL.txt' destination='LICENSE' condition="$PLASTER_PARAM_License -eq 'AGPL'"/>
-    <templateFile source='template/license/Apache.txt' destination='LICENSE' condition="$PLASTER_PARAM_License -eq 'Apache'"/>
-    <templateFile source='template/license/GPL.txt' destination='LICENSE' condition="$PLASTER_PARAM_License -eq 'GPL'"/>
-    <templateFile source='template/license/MIT.txt' destination='LICENSE' condition="$PLASTER_PARAM_License -eq 'MIT'"/>
+    <templateFile source='template\license\AGPL.txt' destination='LICENSE' condition="$PLASTER_PARAM_License -eq 'AGPL'"/>
+    <templateFile source='template\license\Apache.txt' destination='LICENSE' condition="$PLASTER_PARAM_License -eq 'Apache'"/>
+    <templateFile source='template\license\GPL.txt' destination='LICENSE' condition="$PLASTER_PARAM_License -eq 'GPL'"/>
+    <templateFile source='template\license\MIT.txt' destination='LICENSE' condition="$PLASTER_PARAM_License -eq 'MIT'"/>
     <file source='template\.gitignore' destination='.gitignore'/>
     <file source='template\build.depend.psd1' destination='build.depend.psd1'/>
     <file source='template\build.ps1' destination='build.ps1'/>
