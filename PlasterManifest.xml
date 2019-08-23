@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plasterManifest
+  schemaVersion="1.1"
+  templateType="Project" xmlns="http://www.microsoft.com/schemas/PowerShell/Plaster/v1">
+  <metadata>
+    <name>AutoDocumentsPlaster</name>
+    <id>22448b40-b966-4cd6-8b9c-d87521a74698</id>
+    <version>1.0.0</version>
+    <title>AutoDocuments Plaster Template</title>
+    <description></description>
+    <author>Corey Keller</author>
+    <tags></tags>
+  </metadata>
+  <parameters>
+    <!-- Module Info -->
+    <parameter name='ModuleName'
+               type='text'
+               prompt='Enter the name of the module'/>
+
+    <parameter name='Description'
+               type='text'
+               prompt='Enter a description of the module'/>
+
+    <parameter name='Version'
+               type='text'
+               default='0.1.0'
+               prompt='Enter the version number (1.2.3) for the module'/>
+
+    <!-- License -->
+    <parameter name='FullName'
+               type='user-fullname'
+               store='text'
+               prompt='Enter your full name'/>
+
+    <parameter name='PSGalleryAPIKey'
+               type='text'
+               store='text'
+               prompt='Enter your AppVeyor encrypted PowerShell Gallery API Key'/>
+
+    <parameter name='GitAccessToken'
+               type='text'
+               store='text'
+               prompt='Enter your AppVeyor encrypted GitHub Access Token'/>
+
+    <parameter name="GitHubRepo" 
+               type="text"
+               default="${PLASTER_PARAM_ModuleName}"
+               prompt="Enter the GitHub repo name for this module"/>
+
+    <parameter name="GitHubUserName"
+               type="user-fullname"
+               default="${PLASTER_PARAM_FullName}"
+               prompt="Enter your GitHub username"/>
+
+    <parameter name="GitHubDomain" 
+               type="text"
+               default="github.com"
+               prompt="Enter the GitHub domain this project will be hosted on"/>
+
+    <!-- Licensing -->
+    <parameter name='License'
+               type='choice'
+               default='1'
+               store='text'
+               prompt='Select a license for your module'>
+      <choice label='&amp;AGPL'
+              help='Adds an Apache license file.'
+              value="AGPL"/>
+      <choice label='A&amp;pache'
+              help='Adds an Apache license file.'
+              value="Apache"/>
+      <choice label='&amp;GPL'
+              help='Adds an Apache license file.'
+              value="GPL"/>
+      <choice label='&amp;MIT'
+              help='Adds an MIT license file.'
+              value='MIT'/>
+      <choice label='&amp;None'
+              help='No license specified.'
+              value='None'/>
+    </parameter>
+  </parameters>
+  <content>
+  <message>Setting up your project</message>
+  <newModuleManifest destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psd1' moduleVersion='$PLASTER_PARAM_ModuleVersion' rootModule='${PLASTER_PARAM_ModuleName}.psm1' author='$PLASTER_PARAM_FullName' description='$PLASTER_PARAM_ModuleDesc'/>
+  <templateFile source='ModuleName\ModuleName.psm1' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psm1'/>
+  <templateFile source='appveyor.yml' destination='appveyor.yml'/>
+  </content>
+</plasterManifest>

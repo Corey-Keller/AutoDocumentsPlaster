@@ -1,8 +1,12 @@
-site_name: AutoDocumentsExample - Write The FAQ ‘n Manual
-repo_url: https://github.com/markekraus/AutoDocumentsExample
-site_author: Mark Kraus
+site_name: <%=$PLASTER_PARAM_ModuleName%>
+repo_url: https://<%=$PLASTER_PARAM_GitHubDomain%>/<%=$PLASTER_PARAM_GitHubUserName%>/<%=$PLASTER_PARAM_ModuleName%>
+site_author: <%=$PLASTER_PARAM_FullName%>
 edit_uri: edit/master/docs/
 theme: readthedocs
-copyright: "AutoDocumentsExample is licensed under the <a href='https://github.com/markekraus/AutoDocumentsExample/raw/master/LICENSE'>MIT license"
+copyright: "<%=$PLASTER_PARAM_ModuleName%> is licensed under the <a href='https://<%=$PLASTER_PARAM_GitHubDomain%>/<%=$PLASTER_PARAM_GitHubUserName%>/<%=$PLASTER_PARAM_ModuleName%>/raw/master/LICENSE'><%=$PLASTER_PARAM_License%> license"
 pages:
   - Home: index.md
+  - <%=$PLASTER_PARAM_ModuleName%> Basics:
+    - What is <%=$PLASTER_PARAM_ModuleName%>?: about.md
+    - Quick Start: Quick-Start-Installation-and-Example.md
+  - Acknowledgements: acknowledgements.md
