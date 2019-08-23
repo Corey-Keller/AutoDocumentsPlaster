@@ -5,7 +5,7 @@ Get-PackageProvider -Name NuGet -ForceBootstrap | Out-Null
 
 Install-Module PSDepend -Scope CurrentUser -force
 Import-Module PSDepend
-Invoke-PSDepend 
+Invoke-PSDepend -Path .\build.depend.psd1 -Install -Import -Force
 
 Set-BuildEnvironment
 
