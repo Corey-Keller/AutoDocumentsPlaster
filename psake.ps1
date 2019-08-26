@@ -96,6 +96,7 @@ Task Build -Depends UnitTests {
     "Populating NestedModules"
     # Scan the Public and Private folders and add all Files to NestedModules
     # I prefer to populate this instead of dot sourcing from the .psm1
+    
     $Parameters = @{
         Path = @(
             "$ModuleFolder\Public\*.ps1"
@@ -103,11 +104,27 @@ Task Build -Depends UnitTests {
         )
         ErrorAction = 'SilentlyContinue'
     }
-    $ExportModules = Get-ChildItem @Parameters |
+    $NestedModules = Get-ChildItem @Parameters |
         Where-Object { $_.Name -notmatch '\.tests{0,1}\.ps1' } |
         ForEach-Object { $_.fullname.replace("$ModuleFolder\", "") }
-    Update-Metadata -Path $env:BHPSModuleManifest -PropertyName NestedModules -Value $ExportModules
-    
+
+    try {
+        # This will error if NestedModules has been commented out
+        Get-Metadata -Path $env:BHPSModuleManifest -PropertyName NestedModules
+    }
+    catch {
+        # Set the NestedModules value to be the module itself, because it's the only path that
+        # (should) ALWAYS exist and be valid. Then it can be updated as normal 
+        Update-modulemanifest -Path $env:BHPSModuleManifest -NestedModules @(".\$([io.path]::GetFileNameWithoutExtension($env:BHPSModuleManifest)).psm1")
+    }
+
+    if ($NestedModules.Length -gt 0) {
+        Update-Metadata -Path $env:BHPSModuleManifest -PropertyName NestedModules -Value $NestedModules
+    }
+    else {
+        Update-Metadata -Path $env:BHPSModuleManifest -PropertyName NestedModules -Value @()
+    }
+
     # Bump the module version
     Update-Metadata -Path $env:BHPSModuleManifest -PropertyName ModuleVersion -Value $BuildVersion
     

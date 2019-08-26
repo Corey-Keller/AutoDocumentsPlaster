@@ -100,7 +100,7 @@
     <file source='template\deploy.PSDeploy.ps1' destination='deploy.PSDeploy.ps1'/>
     <file source='template\GitVersion.yml' destination='GitVersion.yml'/>
     <file source='template\tests\**' destination='tests'/>
-    <file source='template\ModuleName\Public\**' destination='Public'/>
-    <file source='template\ModuleName\Private\**' destination='Private'/>
+    <file source='template\ModuleName\Public\**' destination='${PLASTER_PARAM_ModuleName}\Public'/>
+    <file source='template\ModuleName\Private\**' destination='${PLASTER_PARAM_ModuleName}\Private'/>
   </content>
 </plasterManifest>
