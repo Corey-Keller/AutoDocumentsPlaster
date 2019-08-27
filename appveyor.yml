@@ -2,7 +2,7 @@
 
 # GitVersion Stuff
 install:
-  - choco install gitversion.portable -pre -y
+  - choco upgrade gitversion.portable -pre -y
 
 before_build:
   - nuget restore
@@ -37,6 +37,8 @@ skip_commits:
 # build cache to preserve files/folders between builds
 cache:
   - _build-cache -> *.depend.psd1
+  - C:\ProgramData\chocolatey\lib -> appveyor.yml
+  - C:\ProgramData\chocolatey\bin -> appveyor.yml
 
 build: false
 
