@@ -13,5 +13,6 @@
     'PSDeploy' = 'latest'
     'BuildHelpers' = 'latest'
     'platyPS' = 'latest'
+    'ChangelogManagement' = 'latest'
     'PSScriptAnalyzer' = 'latest'
 }
